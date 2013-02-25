@@ -1,0 +1,82 @@
+html,
+body {
+    height: 100%;
+}
+
+.ba {
+    background-color: #fff;
+    border: 1px solid rgb(248, 248, 248);
+}
+
+.board {
+    background-color: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.sidebar {
+    background-color: #fff;
+    border-radius: 5px;
+    min-height: 500px !important;
+}
+
+.item:first-child {
+    border-top: none;
+}
+
+.item {
+    min-height: 70px;
+    border-top: 1px solid rgb(220, 220, 220);
+}
+
+.grey {
+    background-color: rgb(248, 248, 248);
+}
+
+.avatar {
+    padding: 10px;
+    float: left;
+}
+
+.info {
+    float: left;
+    padding: 8px 0 0 10px;
+    width: 500px;
+    word-wrap: break-word;
+}
+
+.thread {
+    padding: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+.padding15 {
+    padding: 15px;
+}
+
+.breadcrumb {
+    margin: 0;
+    background-color: rgb(221, 221, 221);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.breadcrumb > .active {
+    color: rgb(87, 87, 87);
+}
+
+hr {
+    margin: 10px 0;
+}
+
+#wrap {
+    padding-top: 60px;
+    background-color: rgb(243, 243, 243);
+    min-height: 100%;
+}
+

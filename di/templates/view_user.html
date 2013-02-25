@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="span8">
+    <div class="board">
+      <div class="item">
+        <div class="avatar">
+          <a href="#"><img src="{{user.email | gravatar }}" /></a>
+        </div>
+        <div class="info">
+          <h2>{{user.username}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="board">
+      {% for thread in threads %}
+      <div class="item">
+        <div class="info">
+          <p><a href="{{url_for('view_thread', thread_id=thread.thread_id)}}"><strong>{{thread.title}}</strong></a></p>
+          <p>by <a href="#"><strong>{{thread.username}}</strong></a> • {{thread.pub_date | timestamp(precise =True) | safe}} • {{thread.click}} click • {{thread.reply}} reply
+          </p>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

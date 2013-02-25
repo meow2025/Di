@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form action="" method="post" class="form-horizontal">
+  <fieldset>
+    <legend>Setting</legend>
+    <div class="control-group">
+      <label class="control-label">Something</label>
+      <div class="controls">
+        <input type="text" name="Something"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+         <button type="submit" class="btn">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+<form action="{{url_for('modify_password')}}" method="post" class="form-horizontal">
+  <fieldset>
+    <legend>Change password</legend>
+    <div class="control-group">
+      <label class="control-label">Password</label>
+      <div class="controls">
+        <input type="password" name="password"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Password(Repeat)</label>
+      <div class="controls">
+        <input type="password" name="password2"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+         <button type="submit" class="btn">Submit</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}

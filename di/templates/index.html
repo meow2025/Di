@@ -1,0 +1,26 @@
+{% extends "sidebar-layout.html" %}
+{% block content %}
+  <div class="board">
+  {% for thread in threads %}
+    <div class="item">
+      <div class="avatar">
+        <a href="#"><img src="{{thread.email | gravatar }}" /></a>
+      </div>
+      <div class="info">
+        <p><a href="{{url_for('view_thread', thread_id=thread.thread_id)}}"><strong>{{thread.title}}</strong></a></p>
+        <p>by <a href="#"><strong>{{thread.username}}</strong></a> • {{thread.pub_date | timestamp(precise = False) | safe}} • {{thread.click}} click • {{thread.reply}} reply
+        </p>
+      </div>
+      <div style="clear:both"></div>
+    </div>
+  {% endfor %}
+  </div>
+{% endblock %}
+{% block sidebar %}
+  <div class="padding15">
+  TAG : 
+  {% for tag in tags %}
+    <a href="{{url_for('list_thread', tag_name=tag)}}">{{tag}}</a>
+  {% endfor %}
+  </div>
+{% endblock %}

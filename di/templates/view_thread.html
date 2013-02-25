@@ -1,0 +1,79 @@
+{% extends "sidebar-layout.html" %}
+{% block content %}
+  <div class="board">
+    <ul class="breadcrumb">
+      <li><a href="#">Di</a> <span class="divider">/</span></li>
+        {% if tags %}
+        <li>  
+          {% for tag in tags %}
+          <a href="{{url_for('list_thread', tag_name=tag)}}">{{tag}}</a>
+          {% endfor %}
+          <span class="divider">/</span>
+        </li>
+        {% endif %}
+        <li class="active">{{thread.title}}</li>
+    </ul>
+    <div class="thread">
+      <div class="avatar">
+        <a href="#"><img src="{{thread.email | gravatar }}" /></a>
+      </div>
+      <div class="info">
+        <p>by <a href="#"><strong>{{thread.username}}</strong></a> • {{thread.pub_date | timestamp | safe }} • {{thread.click}} click • {{thread.reply}} reply
+        </p>
+        <p>
+          {% if g.user %}
+          {% if is_mark %}
+          <a href="{{url_for('unmark_thread', thread_id=thread.thread_id)}}">Unmark</a>
+          {% else %}
+          <a href="{{url_for('mark_thread', thread_id=thread.thread_id)}}">Mark</a>
+          {% endif %}
+          {% endif %}
+        </p>
+      </div>
+      <div style="clear:both;"></div>
+      <hr />
+      <p>{{thread.text | markdown | safe}}</p>
+
+    </div>
+  </div>
+  <div class="board">
+  {% for reply in replies %}
+  <div class="item">
+    <div class="avatar">
+      <a href="#"><img src="{{reply.email|gravatar|safe}}" /></a>
+    </div>
+    <div class="info">
+      <p><a href="#"><strong>{{reply.username}}</strong></a> • {{reply.pub_date | timestamp | safe }} • <a href="#reply" onclick="reply({{reply.username}})">Reply</a></p>
+      <p>{{reply.text | markdown | safe}}</p>
+    </div>
+    <div style="clear:both"></div>
+  </div>
+  {% else %}
+  <div class="center grey">No reply yet.</div>
+  {% endfor %}
+  </div>
+
+  <div class="board">
+    <div class="padding15">
+      <a name="reply"></a>
+    {% if g.user %}
+      <form action="{{url_for('create_reply')}}" method="post">
+        <fieldset>
+          <legend>Reply</legend>
+          <input type="hidden" name="thread_id" value="{{thread.thread_id}}"/>
+          <textarea rows="5" type="text" name="text" class="span7"></textarea>
+          <label class="checkbox">
+            <input type="checkbox" name="notify_me" /> Notify me when there's new reply
+          </label>
+          <button type="submit" class="btn">Post</button>
+        </fieldset>
+      </form>
+    {% else %}
+    <div class="center"><a href="{{url_for('signin', redirect_url=request.url)}}">Signin to reply</a></div>
+    {% endif %}
+    </div>
+  </div>
+{% endblock %}
+{% block sidebar %}
+some thing here to add.
+{% endblock %}

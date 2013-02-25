@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="span8">
+    <div class="board padding15">
+    {% for n in notifications %}
+      {% if n.is_read %}
+      <div class="item grey">
+      {% else %}
+      <div class="item">
+      {% endif %}
+      <div class="item">
+        <div class="avatar">
+          <a href="#"><img src="{{n.email | gravatar }}" /></a>
+        </div>
+        <div class="info">
+          {% if n.type == 1 %}
+          <p><a href="{{url_for('view_thread', thread_id=n.thread_id)}}"><strong>{{n.title}}</strong></a> has new reply from
+          <strong>{{n.username}}</strong>.</p>
+          {% else %}
+          <p><strong>{{n.username}}</strong> mention you in <a href="{{url_for('view_thread', thread_id=n.thread_id)}}"><strong>{{n.title}}</strong></a>.</p>
+          {% endif %}
+          <p>{{n.pub_date | timestamp | safe}}.</p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+    {% else %}
+    No notification yet.
+    {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

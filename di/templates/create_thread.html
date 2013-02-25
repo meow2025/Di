@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form action="" method="post" class="form-horizontal">
+  <fieldset>
+    <legend>Create Thread</legend>
+    <div class="control-group">
+      <label class="control-label">Title</label>
+      <div class="controls">
+        <input type="text" name="title" class="span6" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Tags</label>
+      <div class="controls">
+        <input type="text" name="tags" class="span6" />
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">Text</label>
+      <div class="controls">
+        <textarea name="text" class="span6" rows="13"></textarea>
+      </div>
+    </div>
+    <div class="control-group">
+      <div class="controls">
+         <button type="submit" class="btn">Post</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+{% endblock %}

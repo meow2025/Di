@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  <div class="span8">
+    <div class="board padding15">
+      {% for thread in threads %}
+      <div class="item">
+        <div class="avatar">
+          <a href="#"><img src="{{thread.email | gravatar }}" /></a>
+        </div>
+        <div class="info">
+          <p><a href="{{url_for('view_thread', thread_id=thread.thread_id)}}"><strong>{{thread.title}}</strong></a></p>
+          <p>by <a href="#"><strong>{{thread.username}}</strong></a> • {{thread.pub_date | timestamp | safe}} • {{thread.click}} click • {{thread.reply}} reply • <a href="{{url_for('unmark_thread', thread_id=thread.thread_id)}}">unmark</a>
+          </p>
+        </div>
+        <div style="clear:both"></div>
+      </div>
+      {% else %}
+      You havn't mark any thread yet.
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

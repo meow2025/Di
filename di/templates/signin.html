@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row">
+  {% if error %}
+  <div class="error">{{error}}</div>
+  {% endif %}
+  <form action="" method="post" class="form-horizontal">
+    <fieldset>
+      <legend>Sign In</legend>
+      <div class="control-group">
+        <label class="control-label">Email</label>
+        <div class="controls">
+          <input type="text" name="email" />
+        </div>
+      </div>
+      <div class="control-group">
+        <label class="control-label">Password</label>
+        <div class="controls">
+          <input type="password" name="password" />
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="controls">
+          <button type="submit" class="btn">Sign In</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+{% endblock %}
